@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motus - Plataforma de Gestión Integral</title>
+    <title>Motus - Sistema de Gestión</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
@@ -16,11 +16,11 @@
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         motus: {
-                            green: '#84cc16', // Verde Neón (Identidad Marca)
-                            bg: '#09090b',    // Fondo Negro Profundo
-                            card: '#18181b',  // Paneles Gris Oscuro
-                            border: '#27272a',// Bordes Sutiles
-                            hover: '#27272a', // Estado Hover
+                            green: '#84cc16', // Verde Neón Identidad
+                            bg: '#09090b',    // Fondo Negro
+                            card: '#18181b',  // Paneles
+                            border: '#27272a',// Bordes
+                            hover: '#27272a',
                         }
                     }
                 }
@@ -28,39 +28,22 @@
         }
     </script>
     <style>
-        /* Estilos Globales */
         body { background-color: #09090b; color: white; }
-        
-        /* Transiciones de Vistas */
         .view-section { display: none; opacity: 0; transition: opacity 0.3s ease; }
         .active-view { display: flex; opacity: 1; }
         
-        /* Estilo Menú Lateral Activo */
         .nav-item.active { background-color: #27272a; color: white; border-left: 3px solid #84cc16; }
         .nav-item { border-left: 3px solid transparent; }
         
-        /* Scrollbar Personalizada */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #09090b; }
         ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #84cc16; }
-
-        /* Utilidad para inputs de fecha */
-        .date-select {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23a1a1aa' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            background-position: right 0.5rem center;
-            background-repeat: no-repeat;
-            background-size: 1.5em 1.5em;
-            padding-right: 2.5rem;
-            -webkit-appearance: none;
-            appearance: none;
-        }
     </style>
 </head>
 <body class="h-screen w-full overflow-hidden text-sm font-sans selection:bg-motus-green selection:text-black">
 
     <section id="auth-layout" class="view-section active-view w-full h-full">
-        
         <div class="hidden lg:flex w-1/2 bg-zinc-900 relative items-center justify-center overflow-hidden">
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop')] bg-cover bg-center opacity-30 grayscale mix-blend-multiply"></div>
             <div class="relative z-10 p-16 max-w-xl">
@@ -68,16 +51,14 @@
                     <span class="text-5xl font-black italic text-motus-green">M</span>
                 </div>
                 <h1 class="text-7xl font-black italic text-white mb-6 tracking-tighter leading-none">MOTUS<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-motus-green to-emerald-600">SYSTEM</span></h1>
-                <p class="text-zinc-400 text-xl font-light">Gestión inteligente para tu entrenamiento. Reserva clases, monitorea tu progreso y gestiona tu salud.</p>
             </div>
         </div>
 
-        <div class="w-full lg:w-1/2 bg-motus-bg flex flex-col justify-center p-8 sm:p-20 relative overflow-y-auto">
-            
+        <div class="w-full lg:w-1/2 bg-motus-bg flex flex-col justify-center p-8 sm:p-20 relative">
             <div id="form-login" class="w-full max-w-md mx-auto fade-in">
                 <div class="mb-10">
-                    <h2 class="text-3xl font-bold text-white mb-2">Bienvenido</h2>
-                    <p class="text-zinc-500">Ingresa tus credenciales para acceder al panel.</p>
+                    <h2 class="text-3xl font-bold text-white mb-2">Iniciar Sesión</h2>
+                    <p class="text-zinc-500">Accede a tu plataforma de entrenamiento.</p>
                 </div>
 
                 <div class="space-y-5">
@@ -86,180 +67,78 @@
                         <input type="text" class="w-full mt-2 p-4 bg-motus-card border border-motus-border rounded-xl focus:border-motus-green focus:outline-none text-white transition placeholder-zinc-700 font-medium" placeholder="ej. 12.345.678-9">
                     </div>
                     <div>
-                        <div class="flex justify-between">
-                            <label class="text-xs font-bold text-motus-green uppercase tracking-wider">Contraseña</label>
-                            <a href="#" class="text-xs text-zinc-500 hover:text-white">¿Olvidaste tu clave?</a>
-                        </div>
+                        <label class="text-xs font-bold text-motus-green uppercase tracking-wider">Contraseña</label>
                         <input type="password" class="w-full mt-2 p-4 bg-motus-card border border-motus-border rounded-xl focus:border-motus-green focus:outline-none text-white transition placeholder-zinc-700 font-medium" placeholder="••••••••">
                     </div>
                 </div>
 
-                <button onclick="enterApp()" class="w-full mt-8 bg-motus-green text-black font-black py-4 rounded-xl hover:bg-lime-400 transition transform hover:-translate-y-1 shadow-lg shadow-motus-green/20 uppercase tracking-widest">
-                    INICIAR SESIÓN
+                <button onclick="enterApp('socio')" class="w-full mt-8 bg-motus-green text-black font-black py-4 rounded-xl hover:bg-lime-400 transition transform hover:-translate-y-1 shadow-lg shadow-motus-green/20 uppercase tracking-widest">
+                    Ingresar
                 </button>
 
-                <p class="mt-8 text-center text-zinc-500">
-                    ¿No tienes cuenta? <button onclick="toggleAuth('register')" class="text-white font-bold hover:text-motus-green underline decoration-motus-green decoration-2 underline-offset-4">Regístrate aquí</button>
-                </p>
-            </div>
-
-            <div id="form-register" class="w-full max-w-md mx-auto hidden">
-                <button onclick="toggleAuth('login')" class="text-zinc-500 hover:text-white mb-6 flex items-center gap-2 text-xs font-bold uppercase"><i class="fas fa-arrow-left"></i> Volver al Login</button>
-                
-                <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-white mb-2">Crear Cuenta</h2>
-                    <p class="text-zinc-500">Únete a la comunidad Motus hoy mismo.</p>
+                <div class="mt-8 flex justify-between items-center border-t border-motus-border pt-6">
+                    <button class="text-zinc-500 hover:text-white text-xs font-bold uppercase">Crear Cuenta</button>
+                    <button onclick="enterApp('admin')" class="text-zinc-600 hover:text-motus-green text-xs font-bold uppercase flex items-center gap-2">
+                        <i class="fas fa-lock"></i> Acceso Administrativo
+                    </button>
                 </div>
-
-                <div class="space-y-4">
-                    <div>
-                        <label class="text-[10px] font-bold text-zinc-500 uppercase">Nombre Completo</label>
-                        <input type="text" class="w-full p-3 bg-motus-card border border-motus-border rounded-lg focus:border-motus-green focus:outline-none text-white" placeholder="Tu nombre">
-                    </div>
-
-                    <div class="bg-zinc-900/50 p-4 rounded-xl border border-motus-border">
-                        <label class="text-[10px] font-bold text-motus-green uppercase block mb-2">Fecha de Nacimiento <span class="text-zinc-500">(Requerido)</span></label>
-                        <div class="grid grid-cols-3 gap-2">
-                            <select class="date-select bg-motus-card border border-motus-border text-white rounded p-2 text-center focus:border-motus-green focus:outline-none"><option>Día</option><option>01</option><option>02</option><option>24</option></select>
-                            <select class="date-select bg-motus-card border border-motus-border text-white rounded p-2 text-center focus:border-motus-green focus:outline-none"><option>Mes</option><option>Ene</option><option>Feb</option></select>
-                            <select class="date-select bg-motus-card border border-motus-border text-white rounded p-2 text-center focus:border-motus-green focus:outline-none"><option>Año</option><option>1995</option><option>1996</option></select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="text-[10px] font-bold text-zinc-500 uppercase">Email</label>
-                        <input type="email" class="w-full p-3 bg-motus-card border border-motus-border rounded-lg focus:border-motus-green focus:outline-none text-white" placeholder="correo@ejemplo.com">
-                    </div>
-                    <div>
-                        <label class="text-[10px] font-bold text-zinc-500 uppercase">Contraseña</label>
-                        <input type="password" class="w-full p-3 bg-motus-card border border-motus-border rounded-lg focus:border-motus-green focus:outline-none text-white" placeholder="••••••••">
-                    </div>
-                </div>
-
-                <button onclick="enterApp()" class="w-full mt-6 bg-transparent border border-motus-green text-motus-green font-bold py-3 rounded-xl hover:bg-motus-green hover:text-black transition uppercase tracking-wide">
-                    Registrarme
-                </button>
             </div>
         </div>
     </section>
 
-    <section id="app-layout" class="view-section w-full h-full hidden">
-        
+    <section id="layout-socio" class="view-section w-full h-full hidden">
         <aside class="w-64 bg-motus-card border-r border-motus-border flex flex-col flex-shrink-0 z-20">
             <div class="h-16 flex items-center px-6 border-b border-motus-border">
-                <div class="w-8 h-8 border-2 border-motus-green rounded-lg flex items-center justify-center mr-3 text-motus-green font-black italic">M</div>
-                <span class="font-black italic text-xl tracking-tight text-white">MOTUS</span>
+                <span class="font-black italic text-xl tracking-tight text-white"><span class="text-motus-green">M</span>OTUS APP</span>
             </div>
-
             <nav class="flex-1 px-3 py-6 space-y-1">
-                <p class="px-3 text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">Principal</p>
-                <button onclick="navTo('view-dashboard', this)" class="nav-item active w-full flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-zinc-400 hover:bg-motus-hover hover:text-white transition group">
-                    <i class="fas fa-chart-pie w-5 text-center group-hover:text-motus-green"></i> <span class="font-medium">Dashboard</span>
+                <p class="px-3 text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">Mi Espacio</p>
+                <button onclick="navTo('socio-news', this)" class="nav-item active w-full flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-zinc-400 hover:bg-motus-hover hover:text-white transition group">
+                    <i class="fas fa-newspaper w-5 text-center group-hover:text-motus-green"></i> <span class="font-medium">Novedades</span>
                 </button>
-                <button onclick="navTo('view-calendar', this)" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-zinc-400 hover:bg-motus-hover hover:text-white transition group">
-                    <i class="fas fa-calendar-alt w-5 text-center group-hover:text-motus-green"></i> <span class="font-medium">Agenda</span>
+                <button onclick="navTo('socio-calendar', this)" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-zinc-400 hover:bg-motus-hover hover:text-white transition group">
+                    <i class="fas fa-calendar-alt w-5 text-center group-hover:text-motus-green"></i> <span class="font-medium">Reservar Clase</span>
                 </button>
-                <button onclick="navTo('view-users', this)" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-zinc-400 hover:bg-motus-hover hover:text-white transition group">
-                    <i class="fas fa-users w-5 text-center group-hover:text-motus-green"></i> <span class="font-medium">Usuarios</span>
-                </button>
-                
-                <p class="px-3 text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-6 mb-2">Mi Cuenta</p>
-                <button onclick="navTo('view-profile', this)" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-zinc-400 hover:bg-motus-hover hover:text-white transition group">
+                <button onclick="navTo('socio-profile', this)" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-zinc-400 hover:bg-motus-hover hover:text-white transition group">
                     <i class="fas fa-user-circle w-5 text-center group-hover:text-motus-green"></i> <span class="font-medium">Mi Perfil</span>
                 </button>
             </nav>
-
             <div class="p-4 border-t border-motus-border flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-zinc-800 flex items-center justify-center text-motus-green font-bold">AH</div>
-                <div class="flex-1 min-w-0">
-                    <p class="text-sm font-bold text-white truncate">Armin H.</p>
-                    <p class="text-xs text-zinc-500 truncate">Socio Activo</p>
-                </div>
-                <button onclick="logout()" class="text-zinc-500 hover:text-red-500" title="Cerrar Sesión"><i class="fas fa-sign-out-alt"></i></button>
+                <div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-motus-green font-bold text-xs">AH</div>
+                <div class="flex-1"><p class="text-xs font-bold text-white">Armin H.</p></div>
+                <button onclick="logout()" class="text-zinc-500 hover:text-red-500"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </aside>
 
-        <main class="flex-1 overflow-y-auto bg-motus-bg relative">
+        <main class="flex-1 overflow-y-auto bg-motus-bg p-8 relative">
             
-            <div id="view-dashboard" class="content-panel active-view flex-col p-8 max-w-7xl mx-auto w-full">
-                <header class="mb-8 flex justify-between items-end">
-                    <div>
-                        <h1 class="text-3xl font-bold text-white mb-1">Hola, Armin 👋</h1>
-                        <p class="text-zinc-400">Resumen operativo y estadísticas.</p>
-                    </div>
-                    <button onclick="navTo('view-calendar', document.querySelectorAll('.nav-item')[1])" class="bg-motus-green text-black px-5 py-2.5 rounded-lg font-bold hover:bg-lime-400 transition shadow-lg shadow-motus-green/20">
-                        + Nueva Reserva
-                    </button>
-                </header>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                    <div class="lg:col-span-2 relative group overflow-hidden rounded-3xl bg-motus-card border border-motus-border p-8 flex justify-between items-center cursor-pointer hover:border-motus-green/30 transition">
-                        <div class="absolute inset-0 bg-motus-green/5 blur-xl group-hover:bg-motus-green/10 transition"></div>
-                        <div class="relative z-10">
-                            <span class="bg-motus-green text-black text-xs font-black px-3 py-1 rounded uppercase tracking-wider">Hoy / 19:00</span>
-                            <h3 class="text-5xl font-black italic text-white mt-4 mb-2">CROSSFIT</h3>
-                            <p class="text-zinc-400 text-lg flex items-center gap-2"><i class="fas fa-map-marker-alt"></i> Sala Pro • Coach Pedro</p>
-                        </div>
-                        <div class="hidden sm:flex w-32 h-32 bg-black rounded-full items-center justify-center border-2 border-motus-border group-hover:border-motus-green transition transform group-hover:scale-110">
-                            <i class="fas fa-dumbbell text-5xl text-white group-hover:text-motus-green"></i>
+            <div id="socio-news" class="content-panel active-view flex-col max-w-5xl mx-auto w-full">
+                <header class="mb-8"><h1 class="text-3xl font-bold text-white mb-1">Hola, Armin 👋</h1><p class="text-zinc-400">Aquí tienes lo último de Motus.</p></header>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="bg-motus-card border border-motus-green rounded-2xl p-6 relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 bg-motus-green text-black text-[10px] font-bold px-2 py-1 rounded-bl-lg uppercase">Próxima sesión</div>
+                            <h3 class="text-3xl font-black italic text-white mt-2 mb-1">CROSSFIT</h3>
+                            <p class="text-zinc-400 text-sm mb-4">Hoy, 19:00 hrs • Sala Pro</p>
+                            <button onclick="navTo('socio-calendar', document.querySelectorAll('#layout-socio .nav-item')[1])" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white py-2 rounded-lg text-xs font-bold uppercase transition">Ver en Agenda</button>
                         </div>
                     </div>
-                    
-                    <div class="flex flex-col gap-6">
-                        <div class="bg-motus-card border border-motus-border p-6 rounded-2xl flex-1 flex flex-col justify-center">
-                            <p class="text-zinc-500 text-xs font-bold uppercase mb-2">Clases del Mes</p>
-                            <div class="flex items-end gap-2">
-                                <p class="text-4xl font-black text-white">12</p>
-                                <p class="text-xs text-motus-green mb-1 font-bold">+2 vs mes pasado</p>
-                            </div>
+                    <div class="lg:col-span-2 space-y-4">
+                        <div class="bg-zinc-900 border-l-4 border-motus-green p-5 rounded-r-xl flex gap-4">
+                            <div class="bg-motus-green/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 text-motus-green"><i class="fas fa-bullhorn"></i></div>
+                            <div><h4 class="font-bold text-white text-lg">Horario Especial</h4><p class="text-zinc-400 text-sm mt-1">Atención reducida este viernes por mantención.</p><span class="text-[10px] text-zinc-500 mt-2 block">Hace 2 horas • Admin</span></div>
                         </div>
-                        <div class="bg-zinc-900 border-l-4 border-motus-green p-4 rounded-r-xl flex gap-3 items-center">
-                            <i class="fas fa-bullhorn text-motus-green animate-pulse"></i>
-                            <div>
-                                <p class="text-xs font-bold text-white">Aviso Staff</p>
-                                <p class="text-[10px] text-zinc-400">Cierre anticipado viernes 18:00 hrs.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-motus-card border border-motus-border p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold text-white mb-6">Motivos de No Renovación (KPI Gerencial)</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="space-y-6">
-                            <div class="relative">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm font-bold text-zinc-300">Precio / Economía</span>
-                                    <span class="text-sm font-bold text-white">45%</span>
-                                </div>
-                                <div class="h-3 bg-black rounded-full overflow-hidden">
-                                    <div class="h-full bg-red-500 rounded-full" style="width: 45%"></div>
-                                </div>
-                            </div>
-                            <div class="relative">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm font-bold text-zinc-300">Falta de Tiempo</span>
-                                    <span class="text-sm font-bold text-white">30%</span>
-                                </div>
-                                <div class="h-3 bg-black rounded-full overflow-hidden">
-                                    <div class="h-full bg-orange-500 rounded-full" style="width: 30%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col justify-center items-center text-center p-4 bg-zinc-900 rounded-xl border border-zinc-800">
-                            <p class="text-4xl font-black text-white mb-2">3.4%</p>
-                            <p class="text-zinc-500 text-xs font-bold uppercase">Tasa de Churn Mensual</p>
+                        <div class="bg-motus-card border border-motus-border p-5 rounded-xl flex gap-4 hover:border-zinc-600 transition">
+                            <div class="bg-blue-500/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 text-blue-400"><i class="fas fa-apple-alt"></i></div>
+                            <div><h4 class="font-bold text-white">Nuevo servicio de Nutrición</h4><p class="text-zinc-400 text-sm mt-1">Reserva tu evaluación inicial desde la agenda.</p></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="view-calendar" class="content-panel hidden flex-col p-8 max-w-[1600px] mx-auto w-full h-full">
-                <div class="flex flex-col md:flex-row justify-between items-end md:items-center mb-6 gap-4">
-                    <div>
-                        <h2 class="text-3xl font-black italic text-white tracking-tight">AGENDA SEMANAL</h2>
-                        <p class="text-zinc-500 text-sm">Visualiza cupos y reserva en tiempo real.</p>
-                    </div>
+            <div id="socio-calendar" class="content-panel hidden flex-col max-w-[1600px] mx-auto w-full h-full">
+                <div class="flex justify-between items-center mb-6">
+                    <div><h2 class="text-3xl font-black italic text-white tracking-tight">AGENDA SEMANAL</h2><p class="text-zinc-500 text-sm">Reserva visual de cupos.</p></div>
                     <div class="flex gap-2 bg-motus-card p-1 rounded-xl border border-motus-border">
                         <button class="px-4 py-2 bg-motus-green text-black rounded-lg text-xs font-black uppercase hover:bg-lime-400 transition">Esta Semana</button>
                         <button class="px-4 py-2 text-zinc-400 hover:text-white rounded text-xs font-bold uppercase">Próxima</button>
@@ -269,11 +148,7 @@
                 <div class="flex-1 bg-motus-card border border-motus-border rounded-2xl overflow-hidden flex flex-col shadow-2xl min-h-[600px]">
                     <div class="grid grid-cols-5 border-b border-motus-border bg-black">
                         <div class="p-4 text-center border-r border-motus-border"><span class="block text-zinc-500 text-[10px] font-bold uppercase">Lunes</span><span class="block text-white font-black text-xl">24</span></div>
-                        <div class="p-4 text-center border-r border-motus-border bg-motus-green/5 relative">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-motus-green"></div>
-                            <span class="block text-motus-green text-[10px] font-bold uppercase">Martes (Hoy)</span>
-                            <span class="block text-white font-black text-xl">25</span>
-                        </div>
+                        <div class="p-4 text-center border-r border-motus-border bg-motus-green/5 relative"><div class="absolute top-0 left-0 w-full h-1 bg-motus-green"></div><span class="block text-motus-green text-[10px] font-bold uppercase">Martes (Hoy)</span><span class="block text-white font-black text-xl">25</span></div>
                         <div class="p-4 text-center border-r border-motus-border"><span class="block text-zinc-500 text-[10px] font-bold uppercase">Miércoles</span><span class="block text-white font-black text-xl">26</span></div>
                         <div class="p-4 text-center border-r border-motus-border"><span class="block text-zinc-500 text-[10px] font-bold uppercase">Jueves</span><span class="block text-white font-black text-xl">27</span></div>
                         <div class="p-4 text-center"><span class="block text-zinc-500 text-[10px] font-bold uppercase">Viernes</span><span class="block text-white font-black text-xl">28</span></div>
@@ -287,7 +162,6 @@
                                 <div class="w-full bg-zinc-800 h-1 rounded-full mt-2"><div class="bg-zinc-600 h-1 rounded-full w-full"></div></div>
                             </div>
                         </div>
-
                         <div class="p-3 space-y-3 bg-motus-green/5">
                             <div class="bg-zinc-900 p-0 rounded-xl border border-zinc-700 hover:border-motus-green transition group relative overflow-hidden shadow-lg cursor-pointer">
                                 <div class="bg-zinc-800 px-3 py-2 flex justify-between items-center border-b border-zinc-700">
@@ -301,146 +175,134 @@
                                     <div class="w-full bg-zinc-700 h-1.5 rounded-full overflow-hidden"><div class="bg-motus-green h-full rounded-full" style="width: 80%"></div></div>
                                 </div>
                             </div>
-                            
                             <div class="bg-zinc-800 border-l-4 border-blue-400 p-3 rounded-r-xl cursor-pointer hover:bg-zinc-700 hover:text-white transition group">
-                                <div class="flex justify-between items-start mb-1">
-                                    <span class="text-[10px] font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">12:00</span>
-                                    <i class="fas fa-user-md text-blue-400"></i>
-                                </div>
-                                <h4 class="font-bold text-white text-xs">Nutrición</h4>
-                                <p class="text-[10px] text-zinc-500 mt-1">Dra. Soto</p>
+                                <div class="flex justify-between items-start mb-1"><span class="text-[10px] font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">12:00</span><i class="fas fa-user-md text-blue-400"></i></div>
+                                <h4 class="font-bold text-white text-xs">Nutrición</h4><p class="text-[10px] text-zinc-500 mt-1">Dra. Soto</p>
                             </div>
-
                              <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800 opacity-60">
-                                <div class="flex justify-between items-center mb-1">
-                                    <span class="text-[10px] font-bold text-zinc-500">18:00</span>
-                                    <span class="text-[10px] font-bold text-red-500 border border-red-500 px-1 rounded">FULL</span>
-                                </div>
+                                <div class="flex justify-between items-center mb-1"><span class="text-[10px] font-bold text-zinc-500">18:00</span><span class="text-[10px] font-bold text-red-500 border border-red-500 px-1 rounded">FULL</span></div>
                                 <h4 class="font-bold text-zinc-400 uppercase italic">Crossfit</h4>
                             </div>
                         </div>
-
-                        <div class="p-3 space-y-3">
-                            <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-700 hover:border-motus-green cursor-pointer">
-                                <span class="text-[10px] font-bold text-zinc-400">08:00 AM</span>
-                                <h4 class="font-bold text-white text-xs uppercase italic">Yoga Flow</h4>
-                            </div>
-                        </div>
+                        <div class="p-3 space-y-3"><div class="bg-zinc-900 p-3 rounded-xl border border-zinc-700 hover:border-motus-green cursor-pointer"><span class="text-[10px] font-bold text-zinc-400">08:00 AM</span><h4 class="font-bold text-white text-xs uppercase italic">Yoga Flow</h4></div></div>
                         <div class="p-3"></div><div class="p-3"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="view-users" class="content-panel hidden flex-col p-8 max-w-5xl mx-auto w-full">
-                <h2 class="text-2xl font-bold text-white mb-6">Directorio de Usuarios</h2>
-                <div class="bg-motus-card border border-motus-border rounded-xl overflow-hidden">
-                    <table class="w-full text-left">
-                        <thead class="bg-zinc-900 border-b border-motus-border">
-                            <tr>
-                                <th class="p-4 text-xs font-bold text-zinc-500 uppercase">Nombre</th>
-                                <th class="p-4 text-xs font-bold text-zinc-500 uppercase">Plan</th>
-                                <th class="p-4 text-xs font-bold text-zinc-500 uppercase">Estado</th>
-                                <th class="p-4 text-xs font-bold text-zinc-500 uppercase text-right">Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-motus-border">
-                            <tr class="hover:bg-zinc-900 transition"><td class="p-4 font-bold text-white">Armin Hucke</td><td class="p-4 text-zinc-400">Full Access</td><td class="p-4"><span class="bg-green-500/20 text-green-500 px-2 py-0.5 rounded text-xs font-bold">Activo</span></td><td class="p-4 text-right text-zinc-500"><i class="fas fa-ellipsis-v cursor-pointer hover:text-white"></i></td></tr>
-                            <tr class="hover:bg-zinc-900 transition"><td class="p-4 font-bold text-white">Felipe Belmar</td><td class="p-4 text-zinc-400">Admin</td><td class="p-4"><span class="bg-blue-500/20 text-blue-500 px-2 py-0.5 rounded text-xs font-bold">Staff</span></td><td class="p-4 text-right text-zinc-500"><i class="fas fa-ellipsis-v cursor-pointer hover:text-white"></i></td></tr>
-                            <tr class="hover:bg-zinc-900 transition"><td class="p-4 font-bold text-white">Juan Pérez</td><td class="p-4 text-zinc-400">8 Clases</td><td class="p-4"><span class="bg-red-500/20 text-red-500 px-2 py-0.5 rounded text-xs font-bold">Vencido</span></td><td class="p-4 text-right text-zinc-500"><i class="fas fa-ellipsis-v cursor-pointer hover:text-white"></i></td></tr>
+            <div id="socio-profile" class="content-panel hidden flex-col p-6 sm:p-10 max-w-6xl mx-auto w-full">
+                <header class="mb-8 flex justify-between items-center"><h2 class="text-3xl font-black italic text-white tracking-tight">MI PERFIL</h2><button class="border border-motus-border text-zinc-400 px-4 py-2 rounded-lg text-xs font-bold uppercase hover:text-white"><i class="fas fa-pen"></i> Editar</button></header>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="bg-motus-card border border-motus-border rounded-3xl p-8 flex flex-col items-center text-center relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-motus-green/10 to-transparent"></div>
+                            <div class="relative w-32 h-32 bg-zinc-900 rounded-full flex items-center justify-center border-4 border-motus-green mb-4 shadow-lg"><span class="text-4xl font-black text-white italic">AH</span></div>
+                            <h3 class="text-2xl font-black text-white italic tracking-tight mb-1">Armin Hucke</h3>
+                            <div class="inline-flex items-center gap-2 bg-motus-green/10 text-motus-green px-4 py-1.5 rounded-full border border-motus-green/20 mb-6"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-motus-green opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-motus-green"></span></span><span class="text-xs font-black uppercase tracking-widest">Activo</span></div>
+                            <div class="w-full bg-zinc-900 rounded-xl p-4 border border-motus-border text-left"><div class="flex justify-between items-end mb-2"><span class="text-[10px] font-bold text-zinc-500 uppercase">Asistencia</span><span class="text-sm font-black text-white">12/20</span></div><div class="w-full bg-zinc-800 h-2 rounded-full overflow-hidden"><div class="bg-motus-green h-full rounded-full" style="width: 60%"></div></div></div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="bg-motus-card border border-motus-border rounded-3xl p-8">
+                            <h3 class="text-lg font-bold text-white uppercase italic mb-6 border-b border-motus-border pb-4">Información Personal</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+                                <div><label class="block text-[10px] font-bold text-zinc-500 uppercase mb-2">Nombre</label><div class="p-3 bg-zinc-900/50 rounded-xl border border-zinc-800 text-white font-medium">Armin Hucke</div></div>
+                                <div><label class="block text-[10px] font-bold text-zinc-500 uppercase mb-2">RUT</label><div class="p-3 bg-zinc-900/50 rounded-xl border border-zinc-800 text-white font-medium">12.345.678-9</div></div>
+                                <div><label class="block text-[10px] font-bold text-zinc-500 uppercase mb-2">Email</label><div class="p-3 bg-zinc-900/50 rounded-xl border border-zinc-800 text-white font-medium">armin@motus.cl</div></div>
+                                <div><label class="block text-[10px] font-bold text-zinc-500 uppercase mb-2">F. Nacimiento</label><div class="p-3 bg-zinc-900/50 rounded-xl border border-zinc-800 text-white font-medium">24 Ene 1995</div></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-motus-card border border-motus-border rounded-3xl p-6">
+                                <h3 class="font-bold text-white uppercase italic mb-4"><i class="fas fa-ticket-alt text-blue-400 mr-2"></i>Mi Plan</h3>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between border-b border-zinc-800 pb-2"><span class="text-xs text-zinc-400">Tipo</span><span class="text-sm font-bold text-white">Full Access</span></div>
+                                    <div class="flex justify-between items-center bg-motus-green/5 p-2 rounded"><span class="text-xs text-zinc-400">Vence</span><span class="text-sm font-black text-motus-green">01 Dic 2025</span></div>
+                                </div>
+                            </div>
+                            <div class="bg-motus-card border border-motus-border rounded-3xl p-6">
+                                <h3 class="font-bold text-white uppercase italic mb-4"><i class="fas fa-heartbeat text-red-500 mr-2"></i>Emergencia</h3>
+                                <div><p class="text-[10px] font-bold text-zinc-500 uppercase">Contacto</p><p class="text-sm font-bold text-white">Maria Hucke (Madre)</p></div>
+                                <div class="mt-2"><p class="text-[10px] font-bold text-zinc-500 uppercase">Fono</p><p class="text-sm font-bold text-white">+56 9 9876 5432</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <section id="layout-admin" class="view-section w-full h-full hidden">
+        <aside class="w-64 bg-black border-r border-zinc-800 flex flex-col flex-shrink-0 z-20">
+            <div class="h-16 flex items-center px-6 border-b border-zinc-800">
+                <span class="font-black italic text-xl tracking-tight text-white">ADMIN<span class="text-motus-green">PANEL</span></span>
+            </div>
+            <nav class="flex-1 px-3 py-6 space-y-1">
+                <p class="px-3 text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">Gestión</p>
+                <button onclick="navTo('admin-dashboard', this)" class="nav-item active w-full flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition group"><i class="fas fa-chart-pie w-5 text-center group-hover:text-motus-green"></i> <span class="font-medium">Dashboard</span></button>
+                <button onclick="navTo('admin-users', this)" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition group"><i class="fas fa-users w-5 text-center group-hover:text-motus-green"></i> <span class="font-medium">Usuarios</span></button>
+            </nav>
+            <div class="p-4 border-t border-zinc-800 flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-zinc-800 flex items-center justify-center text-zinc-400 text-xs font-bold"><i class="fas fa-shield-alt"></i></div>
+                <div class="flex-1"><p class="text-xs font-bold text-white">Felipe B.</p><p class="text-[10px] text-zinc-500">Admin</p></div>
+                <button onclick="logout()" class="text-zinc-500 hover:text-red-500"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto bg-zinc-950 p-8 relative">
+            
+            <div id="admin-dashboard" class="content-panel active-view flex-col max-w-7xl mx-auto w-full">
+                <h1 class="text-2xl font-bold text-white mb-6">Resumen Gerencial</h1>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-xl"><p class="text-zinc-500 text-xs font-bold uppercase">Socios Activos</p><p class="text-3xl font-black text-white mt-2">1,240</p><span class="text-green-500 text-xs font-bold"><i class="fas fa-arrow-up"></i> +5%</span></div>
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-xl border-b-4 border-red-500"><p class="text-zinc-500 text-xs font-bold uppercase">Tasa Churn</p><p class="text-3xl font-black text-white mt-2">3.4%</p><span class="text-red-500 text-xs font-bold"><i class="fas fa-arrow-down"></i> +0.5%</span></div>
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-xl"><p class="text-zinc-500 text-xs font-bold uppercase">Ingresos</p><p class="text-3xl font-black text-white mt-2">$ 12.5M</p></div>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-xl">
+                    <h3 class="font-bold text-white mb-6 uppercase text-sm">Motivos de No Renovación</h3>
+                    <div class="space-y-6">
+                        <div class="relative"><div class="flex justify-between mb-2"><span class="text-xs font-bold text-zinc-400">Precio</span><span class="text-xs font-bold text-white">45%</span></div><div class="h-2 bg-black rounded-full overflow-hidden"><div class="h-full bg-red-600 rounded-full" style="width: 45%"></div></div></div>
+                        <div class="relative"><div class="flex justify-between mb-2"><span class="text-xs font-bold text-zinc-400">Tiempo</span><span class="text-xs font-bold text-white">30%</span></div><div class="h-2 bg-black rounded-full overflow-hidden"><div class="h-full bg-orange-500 rounded-full" style="width: 30%"></div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="admin-users" class="content-panel hidden flex-col max-w-7xl mx-auto w-full">
+                <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-bold text-white">Usuarios</h2><button class="bg-motus-green text-black text-xs font-bold px-4 py-2 rounded hover:bg-lime-400">+ Nuevo</button></div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-black border-b border-zinc-800"><tr><th class="p-4 text-zinc-500 font-bold uppercase text-xs">Nombre</th><th class="p-4 text-zinc-500 font-bold uppercase text-xs">Plan</th><th class="p-4 text-zinc-500 font-bold uppercase text-xs">Estado</th><th class="p-4"></th></tr></thead>
+                        <tbody class="divide-y divide-zinc-800">
+                            <tr class="hover:bg-zinc-800 transition"><td class="p-4 font-bold text-white">Armin Hucke</td><td class="p-4 text-zinc-400">Full Access</td><td class="p-4"><span class="bg-green-900 text-green-400 px-2 py-0.5 rounded text-[10px] font-bold uppercase">Activo</span></td><td class="p-4 text-right"><i class="fas fa-ellipsis-v text-zinc-500"></i></td></tr>
+                            <tr class="hover:bg-zinc-800 transition"><td class="p-4 font-bold text-white">Juan Pérez</td><td class="p-4 text-zinc-400">8 Clases</td><td class="p-4"><span class="bg-red-900 text-red-400 px-2 py-0.5 rounded text-[10px] font-bold uppercase">Vencido</span></td><td class="p-4 text-right"><i class="fas fa-ellipsis-v text-zinc-500"></i></td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-            <div id="view-profile" class="content-panel hidden flex-col p-6 sm:p-10 max-w-6xl mx-auto w-full">
-                <header class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <div><h2 class="text-3xl font-black italic text-white tracking-tight">MI PERFIL</h2><p class="text-zinc-500 text-sm">Gestiona tu información personal.</p></div>
-                    <button class="border border-motus-border text-zinc-400 hover:text-white hover:border-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase transition flex items-center gap-2 bg-motus-card"><i class="fas fa-pen"></i> Editar Datos</button>
-                </header>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-1 space-y-6">
-                        <div class="bg-motus-card border border-motus-border rounded-3xl p-8 flex flex-col items-center text-center relative overflow-hidden group">
-                            <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-motus-green/10 to-transparent"></div>
-                            <div class="relative mb-4">
-                                <div class="w-32 h-32 bg-zinc-900 rounded-full flex items-center justify-center border-4 border-motus-green shadow-[0_0_20px_rgba(132,204,22,0.2)] z-10 relative">
-                                    <span class="text-4xl font-black text-white italic">AH</span>
-                                </div>
-                                <div class="absolute bottom-2 right-2 bg-zinc-900 rounded-full p-1 z-20"><div class="bg-motus-green w-6 h-6 rounded-full flex items-center justify-center border border-black"><i class="fas fa-check text-black text-[10px]"></i></div></div>
-                            </div>
-                            <h3 class="text-2xl font-black text-white italic tracking-tight mb-1">Armin Hucke</h3>
-                            <p class="text-zinc-500 text-sm font-medium mb-6">Socio desde Septiembre 2024</p>
-                            <div class="inline-flex items-center gap-2 bg-motus-green/10 text-motus-green px-4 py-1.5 rounded-full border border-motus-green/20 mb-6">
-                                <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-motus-green opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-motus-green"></span></span>
-                                <span class="text-xs font-black uppercase tracking-widest">Membresía Activa</span>
-                            </div>
-                            <div class="w-full bg-zinc-900 rounded-xl p-4 border border-motus-border text-left">
-                                <div class="flex justify-between items-end mb-2"><span class="text-[10px] font-bold text-zinc-500 uppercase">Asistencia Octubre</span><span class="text-sm font-black text-white">12 <span class="text-zinc-500 text-xs font-normal">/ 20</span></span></div>
-                                <div class="w-full bg-zinc-800 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-motus-green to-emerald-500 h-full rounded-full" style="width: 60%"></div></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-2 space-y-6">
-                        <div class="bg-motus-card border border-motus-border rounded-3xl p-8 relative overflow-hidden">
-                            <div class="flex items-center gap-3 mb-6 border-b border-motus-border pb-4">
-                                <div class="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-motus-green"><i class="far fa-id-card"></i></div>
-                                <h3 class="text-lg font-bold text-white uppercase italic">Información Personal</h3>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
-                                <div><label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Nombre</label><div class="p-3 bg-zinc-900/50 rounded-xl border border-zinc-800 text-white font-medium">Armin Hucke</div></div>
-                                <div><label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">RUT</label><div class="p-3 bg-zinc-900/50 rounded-xl border border-zinc-800 text-white font-medium">12.345.678-9</div></div>
-                                <div><label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Email</label><div class="p-3 bg-zinc-900/50 rounded-xl border border-zinc-800 text-white font-medium">armin@motus.cl</div></div>
-                                <div><label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Fecha Nacimiento</label><div class="p-3 bg-zinc-900/50 rounded-xl border border-zinc-800 text-white font-medium">24 Enero 1995</div></div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-motus-card border border-motus-border rounded-3xl p-6">
-                                <div class="flex items-center gap-3 mb-4"><div class="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-blue-400"><i class="fas fa-ticket-alt"></i></div><h3 class="font-bold text-white uppercase italic">Mi Plan</h3></div>
-                                <div class="space-y-4">
-                                    <div class="flex justify-between items-center border-b border-zinc-800 pb-3"><span class="text-xs text-zinc-400">Tipo</span><span class="text-sm font-bold text-white">Full Access</span></div>
-                                    <div class="flex justify-between items-center bg-motus-green/5 p-2 rounded-lg border border-motus-green/10"><span class="text-xs text-zinc-400">Vence</span><span class="text-sm font-black text-motus-green">01 Dic 2025</span></div>
-                                </div>
-                            </div>
-                            <div class="bg-motus-card border border-motus-border rounded-3xl p-6">
-                                <div class="flex items-center gap-3 mb-4"><div class="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-red-500"><i class="fas fa-heartbeat"></i></div><h3 class="font-bold text-white uppercase italic">Emergencia</h3></div>
-                                <div class="space-y-4">
-                                    <div><p class="text-[10px] font-bold text-zinc-500 uppercase mb-1">Contacto</p><p class="text-sm font-bold text-white flex items-center gap-2">Maria Hucke (Madre)</p></div>
-                                    <div><p class="text-[10px] font-bold text-zinc-500 uppercase mb-1">Teléfono</p><p class="text-sm font-bold text-white tracking-widest">+56 9 9876 5432</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </main>
     </section>
 
     <script>
-        function enterApp() {
+        function enterApp(role) {
             document.getElementById('auth-layout').classList.remove('active-view');
             setTimeout(() => {
                 document.getElementById('auth-layout').style.display = 'none';
-                document.getElementById('app-layout').style.display = 'flex';
-                setTimeout(() => document.getElementById('app-layout').classList.add('active-view'), 10);
+                const layoutId = role === 'admin' ? 'layout-admin' : 'layout-socio';
+                const layout = document.getElementById(layoutId);
+                layout.classList.remove('hidden');
+                layout.style.display = 'flex';
+                setTimeout(() => layout.classList.add('active-view'), 10);
             }, 300);
         }
         function logout() { location.reload(); }
-        function toggleAuth(view) {
-            const login = document.getElementById('form-login');
-            const register = document.getElementById('form-register');
-            if (view === 'register') { login.classList.add('hidden'); register.classList.remove('hidden'); }
-            else { register.classList.add('hidden'); login.classList.remove('hidden'); }
-        }
         function navTo(viewId, btnElement) {
-            document.querySelectorAll('.content-panel').forEach(el => { el.classList.add('hidden'); el.classList.remove('active-view'); });
+            const parentLayout = btnElement.closest('.view-section');
+            parentLayout.querySelectorAll('.content-panel').forEach(el => { el.classList.add('hidden'); el.classList.remove('active-view'); });
             const target = document.getElementById(viewId);
             target.classList.remove('hidden');
             setTimeout(() => target.classList.add('active-view'), 10);
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            if(btnElement) btnElement.classList.add('active');
+            parentLayout.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            btnElement.classList.add('active');
         }
     </script>
 </body>
